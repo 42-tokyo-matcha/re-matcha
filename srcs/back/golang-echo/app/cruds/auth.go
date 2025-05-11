@@ -42,7 +42,7 @@ func CreateUser(tx *sql.Tx, req *schemas.RegisterRequest) (int, error) {
             email, 
             password_hash
         ) VALUES ($1, $2, $3)
-		 RETURNING id
+		RETURNING id
     `
 	var userID int
 	// QueryRowを使用してRETURNINGの結果を取得
@@ -168,7 +168,7 @@ func FetchUserIDByEmail(tx *sql.Tx, email string) (int, error) {
 func UpdateUserPasswordHash(tx *sql.Tx, userID int, password_hash string) error {
 	const Query = `
         UPDATE users 
-        SET password_hash = $2 
+        SET password_hash = $2
         WHERE id = $1
     `
 	result, err := tx.Exec(Query, userID, password_hash)

@@ -21,7 +21,6 @@ func NewAuthService(db *sql.DB) *AuthService {
 }
 
 func (a *AuthService) RegisterService(req *schemas.RegisterRequest) error {
-
 	// トランザクションを開始
 	tx, err := a.db.Begin()
 	if err != nil {
